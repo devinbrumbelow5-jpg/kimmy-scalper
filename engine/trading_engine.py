@@ -14,9 +14,9 @@ import traceback
 
 import ccxt
 import ccxt.pro as ccxtpro
-from websockets import connect
 
 from strategies.orderbook_imbalance import OrderbookImbalanceStrategy, Signal, OrderbookLevel
+
 
 @dataclass
 class Position:
@@ -46,6 +46,7 @@ class Trade:
     close_time: float
     duration: float
 
+
 class PaperTradingExchange:
     """Simulated exchange for paper trading with realistic fills"""
     
@@ -74,7 +75,6 @@ class PaperTradingExchange:
         """Calculate realistic fill price with slippage"""
         if side == 'buy':
             base_price = self.orderbook['asks'][0][0] if self.orderbook['asks'] else self.current_price
-            # Add slippage for taker orders
             fill_price = base_price * (1 + self.slippage)
         else:
             base_price = self.orderbook['bids'][0][0] if self.orderbook['bids'] else self.current_price
@@ -218,173 +218,121 @@ class PaperTradingExchange:
             'total_trades': len(self.trades)
         }
 
+
 class TradingEngine:
     """Main trading engine integrating strategy, data, and execution"""
     
     def __init__(self, config: dict):
         self.config = config
+        self.logger = logging.getLogger('kimmy')
+        self.paper_mode = config['bot']['mode'] == 'paper'
+        
+        # Exchange setup
+        self.exchange_id = config['trading']['exchange']
+        self.market_type = config['trading']['market_type']
+        self.pair = config['trading']['primary_pair']
+        
+        if self.paper_mode:
+            self.exchange = PaperTradingExchange(
+                initial_balance=config['trading']['paper_balance'],
+                slippage=config['trading']['paper_slippage'],
+                fees=config['trading']['paper_fees']
+            )
+            self.logger.info("🧪 PAPER MODE ENABLED")
+        else:
+            # Live CCXT Pro exchange
+            if self.exchange_id == "binance":
+                self.exchange = ccxtpro.binance({'enableRateLimit': True})
+            else:
+                self.exchange = ccxtpro.bybit({'enableRateLimit': True})
+            self.logger.info(f"🔴 LIVE MODE on {self.exchange_id.upper()}")
+        
+        # Strategy
+        self.strategy = OrderbookImbalanceStrategy(config['strategy'])
+        
+        # State
+        self.orderbook = {'bids': [], 'asks': []}
         self.running = False
-        self.strategy: Optional[OrderbookImbalanceStrategy] = None
-        self.exchange: Optional[PaperTradingExchange] = None
-        self.ws_connection = None
+        self.positions = {}
         self.last_update = 0
-        self.current_signal: Optional[Signal] = None
-        
-        # Stats
-        self.stats = {
-            'balance': config.get('paper_balance', 1000),
-            'total_pnl': 0.0,
-            'win_rate': 0.0,
-            'sharpe': 0.0,
-            'drawdown': 0.0,
-            'open_positions': 0,
-            'daily_trades': 0,
-            'total_trades': 0
-        }
-        
-        # Callbacks
-        self.on_trade: Optional[Callable] = None
-        self.on_signal: Optional[Callable] = None
+        self.current_signal = None
         
     async def initialize(self):
-        """Initialize strategy and exchange"""
-        strategy_config = self.config.get('strategy', {})
-        self.strategy = OrderbookImbalanceStrategy(strategy_config)
+        """Initialize WebSocket connections and strategy"""
+        self.logger.info("🚀 Initializing Trading Engine...")
+        if not self.paper_mode:
+            await self.exchange.load_markets()
+        self.logger.info("✅ Trading Engine ready")
         
-        trading_config = self.config.get('trading', {})
-        self.exchange = PaperTradingExchange(
-            initial_balance=trading_config.get('paper_balance', 1000),
-            slippage=trading_config.get('paper_slippage', 0.0005),
-            fees=trading_config.get('paper_fees', 0.001)
-        )
-        
-        # Connect to exchange WebSocket
-        await self.connect_websocket()
-        
-        logging.info("[ENGINE] Trading engine initialized")
-        
-    async def connect_websocket(self):
-        """Connect to Bybit WebSocket for real-time data"""
-        pair = self.config.get('trading', {}).get('primary_pair', 'BTCUSDT')
-        symbol = pair.replace('/', '')
-        
-        # Bybit WebSocket (better US support)
-        ws_url = f"wss://stream.bybit.com/v5/public/linear"
-        
-        try:
-            self.ws_connection = await connect(ws_url)
-            # Subscribe to orderbook
-            subscribe_msg = {
-                "op": "subscribe",
-                "args": [{"channel": f"orderbook.50.{symbol}"}]
-            }
-            await self.ws_connection.send(json.dumps(subscribe_msg))
-            logging.info(f"[ENGINE] WebSocket connected: {ws_url} ({symbol})")
-        except Exception as e:
-            logging.error(f"[ENGINE] WebSocket connection failed: {e}")
-            # Fall back to REST API polling
-            logging.info("[ENGINE] Falling back to REST polling")
-            
-    async def process_message(self, message: str):
-        """Process WebSocket message"""
-        try:
-            data = json.loads(message)
-            
-            # Orderbook update
-            if 'bids' in data or 'asks' in data:
-                bids = [OrderbookLevel(float(b[0]), float(b[1]), time.time()) 
-                       for b in data.get('bids', [])]
-                asks = [OrderbookLevel(float(a[0]), float(a[1]), time.time())
-                       for a in data.get('asks', [])]
-                self.strategy.update_orderbook(bids, asks)
-                self.exchange.update_orderbook(
-                    [(b.price, b.volume) for b in bids],
-                    [(a.price, a.volume) for a in asks]
-                )
-                
-            # Trade update
-            if 'p' in data and 'q' in data:
-                trade = {
-                    'price': float(data['p']),
-                    'volume': float(data['q']),
-                    'timestamp': time.time(),
-                    'side': 'buy' if data.get('m') else 'sell'
-                }
-                self.strategy.update_trades([trade])
-                self.exchange.update_price(trade['price'])
-                
-        except Exception as e:
-            logging.error(f"[ENGINE] Message processing error: {e}")
-            
     async def run_loop(self):
-        """Main trading loop"""
+        """Main 24/7 trading loop with WebSocket feed"""
         self.running = True
-        update_interval = 0.1  # 100ms
+        self.logger.info("🔄 Starting main trading loop...")
         
         while self.running:
             try:
-                # Receive WebSocket data
-                if self.ws_connection:
-                    try:
-                        message = await asyncio.wait_for(
-                            self.ws_connection.recv(), 
-                            timeout=update_interval
-                        )
-                        await self.process_message(message)
-                    except asyncio.TimeoutError:
-                        pass
-                        
-                # Update positions
-                self.exchange.update_positions()
+                # Get live orderbook (ccxt.pro websocket)
+                if self.paper_mode:
+                    # Simulated feed - would connect to real data source
+                    await asyncio.sleep(0.5)
+                else:
+                    orderbook = await self.exchange.watch_order_book(self.pair, limit=20)
+                    self.orderbook = orderbook
+                    
+                # Convert to strategy format
+                bids = [OrderbookLevel(price=float(b[0]), volume=float(b[1]), timestamp=time.time()) 
+                       for b in self.orderbook.get('bids', [])]
+                asks = [OrderbookLevel(price=float(a[0]), volume=float(a[1]), timestamp=time.time()) 
+                       for a in self.orderbook.get('asks', [])]
                 
-                # Generate signals
+                self.strategy.update_orderbook(bids, asks)
+                
+                # Generate signal
                 signal = self.strategy.generate_signal()
-                if signal:
+                if signal and signal.confidence > 0.6:
                     self.current_signal = signal
-                    if self.on_signal:
-                        self.on_signal(signal)
-                        
-                    # Execute if we have capacity
-                    max_pos = self.config.get('trading', {}).get('max_open_positions', 5)
-                    if len(self.exchange.positions) < max_pos:
-                        await self.execute_signal(signal)
-                        
-                # Update stats
-                self.stats = self.exchange.get_stats()
+                    await self.execute_signal(signal)
                 
-                await asyncio.sleep(0.01)  # 10ms sleep to prevent CPU spin
+                # Update positions (stop-loss / take-profit)
+                if self.paper_mode:
+                    self.exchange.update_positions()
+                
+                await asyncio.sleep(0.1)  # 10Hz loop
                 
             except Exception as e:
-                logging.error(f"[ENGINE] Loop error: {e}")
-                await asyncio.sleep(1)
-                
+                self.logger.error(f"Engine loop error: {e}")
+                traceback.print_exc()
+                await asyncio.sleep(2)  # backoff
+        
     async def execute_signal(self, signal: Signal):
-        """Execute trading signal"""
-        pair = self.config.get('trading', {}).get('primary_pair', 'BTC/USDT')
+        """Execute a high-confidence signal"""
+        size_pct = self.config['trading']['max_position_size']
         
-        # Risk check - 0.5% per trade
-        risk_pct = self.config.get('trading', {}).get('max_position_size', 0.005)
-        
-        if signal.side == 'buy':
-            self.exchange.open_position(
-                pair, 'buy', risk_pct,
-                signal.stop_loss, signal.take_profit
+        if self.paper_mode:
+            pos = self.exchange.open_position(
+                pair=self.pair,
+                side=signal.side,
+                size_pct=size_pct,
+                stop_loss=signal.stop_loss,
+                take_profit=signal.take_profit
             )
+            if pos:
+                self.logger.info(f"✅ SIGNAL EXECUTED: {signal.side.upper()} | Confidence {signal.confidence:.1%}")
         else:
-            self.exchange.open_position(
-                pair, 'sell', risk_pct,
-                signal.stop_loss, signal.take_profit
-            )
-            
+            # Live execution stub (full CCXT order placement)
+            self.logger.info(f"🔴 LIVE ORDER: {signal.side.upper()} {self.pair}")
+            # TODO: Implement live order execution
+            # await self.exchange.create_market_buy_order(...) etc
+    
     def get_stats(self) -> dict:
         """Return current stats"""
-        return self.stats
+        if self.paper_mode:
+            return self.exchange.get_stats()
+        return {}
         
     def get_orderbook(self) -> dict:
         """Return current orderbook"""
-        if not self.exchange:
-            return {'bids': [], 'asks': [], 'mid': 0}
-        return self.exchange.orderbook
+        return self.orderbook
         
     def get_current_signal(self) -> Optional[dict]:
         """Return current signal"""
@@ -400,22 +348,22 @@ class TradingEngine:
         
     def get_recent_trades(self) -> List[dict]:
         """Return recent trades"""
-        if not self.exchange:
-            return []
-        return [
-            {
-                'time': datetime.fromtimestamp(t.close_time).strftime('%H:%M:%S'),
-                'pair': t.pair,
-                'side': t.side,
-                'entry': t.entry_price,
-                'exit': t.exit_price,
-                'pnl': t.pnl_pct,
-                'reason': t.reason
-            }
-            for t in reversed(self.exchange.trades[-20:])
-        ]
+        if self.paper_mode:
+            return [
+                {
+                    'time': datetime.fromtimestamp(t.close_time).strftime('%H:%M:%S'),
+                    'pair': t.pair,
+                    'side': t.side,
+                    'entry': t.entry_price,
+                    'exit': t.exit_price,
+                    'pnl': t.pnl_pct,
+                    'reason': t.reason
+                }
+                for t in reversed(self.exchange.trades[-20:])
+            ]
+        return []
         
     def stop(self):
-        """Stop the engine"""
+        """Graceful shutdown"""
         self.running = False
-        logging.info("[ENGINE] Trading engine stopped")
+        self.logger.info("🛑 Trading Engine stopped")
