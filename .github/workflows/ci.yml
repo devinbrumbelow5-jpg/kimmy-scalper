@@ -1,0 +1,32 @@
+name: Kimmy Scalper CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    
+    - name: Test strategy imports
+      run: |
+        python3 -c "from strategies.orderbook_imbalance import OrderbookImbalanceStrategy; print('Strategy OK')"
+        python3 -c "from engine.trading_engine import TradingEngine; print('Engine OK')"
