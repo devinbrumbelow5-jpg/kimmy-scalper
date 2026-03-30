@@ -1,0 +1,39 @@
+
+============================================================
+📊 PAPER TRADING MODE
+============================================================
+Simulated trading with $1000 USDT
+============================================================
+
+2026-03-30 06:50:10,774 [INFO] ============================================================
+2026-03-30 06:50:10,774 [INFO] 🚀 KIMMY SCALPER v2.0 - ELITE CRYPTO TRADING
+2026-03-30 06:50:10,774 [INFO] ============================================================
+2026-03-30 06:50:10,774 [INFO] Mode: PAPER
+2026-03-30 06:50:10,774 [INFO] Pair: BTC/USDT
+2026-03-30 06:50:10,774 [INFO] Balance: $1000 USDT
+2026-03-30 06:50:10,775 [INFO] ============================================================
+2026-03-30 06:50:11,245 [ERROR] [ENGINE] WebSocket connection failed: server rejected WebSocket connection: HTTP 451
+2026-03-30 06:50:11,246 [INFO] [ENGINE] Trading engine initialized
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/KIMMY_SCALPER/main.py", line 170, in main
+    asyncio.run(bot.start())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/KIMMY_SCALPER/main.py", line 103, in start
+    await asyncio.gather(ui_task, engine_task)
+  File "/root/.openclaw/workspace/KIMMY_SCALPER/ui/simple_dashboard.py", line 191, in run
+    live.update(self.update())
+                ^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/KIMMY_SCALPER/ui/simple_dashboard.py", line 177, in update
+    self.layout["header"].update(self.create_header())
+    ^^^^^^^^^^^
+AttributeError: 'SimpleDashboard' object has no attribute 'layout'
+
+[ERROR] 'SimpleDashboard' object has no attribute 'layout'

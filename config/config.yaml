@@ -1,0 +1,127 @@
+# Kimmy Scalper Configuration
+# Ultra-Low Latency Crypto Scalping Bot
+
+bot:
+  name: "KimmyScalper"
+  version: "2.0.0"
+  mode: "paper"  # paper | live
+  log_level: "INFO"
+  
+trading:
+  exchange: "bybit"  # bybit | binance | okx
+  market_type: "spot"  # spot | futures
+  
+  # Primary pair for scalping
+  primary_pair: "BTC/USDT"
+  secondary_pairs:
+    - "ETH/USDT"
+    - "SOL/USDT"
+  
+  # Risk Management (Strict)
+  max_position_size: 0.005  # 0.5% of balance per trade
+  max_open_positions: 5
+  max_daily_loss: 0.02  # 2% daily stop
+  max_drawdown: 0.08  # 8% max drawdown
+  
+  # Paper Trading
+  paper_balance: 1000  # USDT
+  paper_slippage: 0.0005  # 5 bps simulated slippage
+  paper_fees: 0.001  # 10 bps taker fee
+
+strategy:
+  name: "OrderbookImbalance"
+  timeframe: "1s"  # 1-second granularity
+  
+  # Orderbook Imbalance
+  orderbook_depth: 10  # Levels to analyze
+  imbalance_threshold: 0.65  # 65% bid/ask ratio to trigger
+  
+  # Momentum Detection
+  momentum_lookback: 20  # 20 seconds
+  momentum_threshold: 0.001  # 0.1% price move
+  volume_spike_multiplier: 2.0  # 2x average volume
+  
+  # RSI Divergence
+  rsi_period: 14
+  rsi_overbought: 70
+  rsi_oversold: 30
+  
+  # Dynamic Stops
+  stop_loss_initial: 0.005  # 0.5%
+  take_profit_initial: 0.01  # 1%
+  trailing_stop_activation: 0.005  # Activate at +0.5%
+  trailing_stop_distance: 0.003  # 0.3% trailing
+  
+  # Partial Fills
+  partial_fill_enabled: true
+  partial_fill_threshold: 0.5  # Close 50% at first target
+  
+  # Auto-pause conditions
+  pause_on_volatility: true
+  volatility_threshold: 0.02  # Pause if >2% move in 60s
+  pause_on_api_error: true
+  api_error_threshold: 3  # Pause after 3 consecutive errors
+
+data:
+  # WebSocket feeds
+  websocket_enabled: true
+  websocket_reconnect_delay: 5
+  
+  # Orderbook settings
+  orderbook_max_depth: 20
+  orderbook_refresh_rate_ms: 100  # 100ms = 10Hz
+  
+  # Trade feed
+  trades_buffer_size: 1000
+  
+  # OHLCV candles
+  candle_timeframes: ["1m", "5m", "15m"]
+  candle_history_limit: 500
+
+ui:
+  enabled: true
+  refresh_rate_ms: 2000  # 2 seconds
+  port: 8080
+  host: "0.0.0.0"
+  
+  # Display settings
+  show_orderbook_depth: 10
+  show_trade_history: 20
+  chart_timeframe: "1m"
+
+logging:
+  level: "INFO"
+  file: "logs/kimmy.log"
+  max_size_mb: 100
+  backup_count: 5
+  
+  # Structured logging
+  json_format: true
+  
+  # Metrics
+  metrics_enabled: true
+  metrics_port: 9090
+
+agents:
+  # Sub-agent configuration
+  data_agent:
+    enabled: true
+    port: 8081
+  
+  execution_agent:
+    enabled: true
+    port: 8082
+  
+  optimization_agent:
+    enabled: true
+    schedule: "0 */4 * * *"  # Every 4 hours
+    
+notifications:
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+  
+  webhook:
+    enabled: false
+    url: ""

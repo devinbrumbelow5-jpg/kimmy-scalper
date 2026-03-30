@@ -1,0 +1,943 @@
+
+======================================================================
+🚀 KIMMY LIVE SCALPER v2.0
+======================================================================
+Mode: PAPER TRADING
+Starting Balance: $1000.00 USDT
+Strategy: Orderbook Imbalance + Momentum
+Risk: 0.5% per trade, Max 5 positions
+======================================================================
+
+
+🟢 ENTRY | 07:03:41
+   LONG BTC/USDT @ $82,549.49
+   Size: $5.00 | Confidence: 82.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:04:05
+   LONG BTC/USDT @ $82,263.66
+   Size: $5.00 | Confidence: 74.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:04:28
+   LONG BTC/USDT @ $82,498.11
+   Size: $5.00 | Confidence: 72.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:04:42
+   LONG BTC/USDT @ $84,457.42
+   Size: $5.00 | Confidence: 68.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:04:57
+   LONG BTC/USDT @ $83,400.47
+   Size: $5.00 | Confidence: 65.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:05:17
+   LONG BTC/USDT @ $83,476.85
+   Size: $5.00 | Confidence: 70.1%
+   Open Positions: 1
+
+🔴 EXIT | 07:05:32
+   LONG BTC/USDT
+   Entry: $83,476.85 → Exit: $82,873.76
+   PnL: $-0.04 (-0.72%)
+   Reason: stop_loss
+   Balance: $999.96
+
+🟢 ENTRY | 07:06:05
+   LONG BTC/USDT @ $84,883.19
+   Size: $5.00 | Confidence: 93.3%
+   Open Positions: 1
+
+🟢 ENTRY | 07:06:11
+   LONG BTC/USDT @ $83,074.55
+   Size: $5.00 | Confidence: 71.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:06:26
+   LONG BTC/USDT @ $82,081.00
+   Size: $5.00 | Confidence: 72.2%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 1
+Win Rate: 0.0% (0/1)
+Total PnL: $-0.04
+Balance: $999.96
+Return: -0.00%
+======================================================================
+
+
+🟢 ENTRY | 07:06:50
+   LONG BTC/USDT @ $82,387.97
+   Size: $5.00 | Confidence: 87.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:07:03
+   LONG BTC/USDT @ $84,730.23
+   Size: $5.00 | Confidence: 80.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:07:20
+   LONG BTC/USDT @ $82,103.33
+   Size: $5.00 | Confidence: 68.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:07:34
+   LONG BTC/USDT @ $83,865.95
+   Size: $5.00 | Confidence: 81.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:07:41
+   LONG BTC/USDT @ $84,472.76
+   Size: $5.00 | Confidence: 69.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:07:48
+   LONG BTC/USDT @ $83,366.85
+   Size: $5.00 | Confidence: 69.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:08:02
+   LONG BTC/USDT @ $82,388.81
+   Size: $5.00 | Confidence: 84.0%
+   Open Positions: 1
+
+🟢 EXIT | 07:08:15
+   LONG BTC/USDT
+   Entry: $82,388.81 → Exit: $83,222.34
+   PnL: $0.05 (+1.01%)
+   Reason: take_profit
+   Balance: $1000.01
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 2
+Win Rate: 50.0% (1/2)
+Total PnL: $+0.01
+Balance: $1000.01
+Return: +0.00%
+======================================================================
+
+
+🟢 ENTRY | 07:08:41
+   LONG BTC/USDT @ $83,178.92
+   Size: $5.00 | Confidence: 87.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:08:49
+   LONG BTC/USDT @ $84,031.44
+   Size: $5.00 | Confidence: 71.3%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:03
+   LONG BTC/USDT @ $84,784.83
+   Size: $5.00 | Confidence: 65.3%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:12
+   LONG BTC/USDT @ $83,463.15
+   Size: $5.00 | Confidence: 82.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:18
+   LONG BTC/USDT @ $84,146.32
+   Size: $5.00 | Confidence: 88.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:25
+   LONG BTC/USDT @ $83,716.41
+   Size: $5.00 | Confidence: 73.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:30
+   LONG BTC/USDT @ $82,316.40
+   Size: $5.00 | Confidence: 88.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:41
+   LONG BTC/USDT @ $84,878.14
+   Size: $5.00 | Confidence: 71.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:09:51
+   LONG BTC/USDT @ $83,172.03
+   Size: $5.00 | Confidence: 84.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:10:05
+   LONG BTC/USDT @ $84,637.69
+   Size: $5.00 | Confidence: 74.4%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 2
+Win Rate: 50.0% (1/2)
+Total PnL: $+0.01
+Balance: $1000.01
+Return: +0.00%
+======================================================================
+
+
+🟢 ENTRY | 07:10:15
+   LONG BTC/USDT @ $82,260.15
+   Size: $5.00 | Confidence: 75.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:10:34
+   LONG BTC/USDT @ $82,384.84
+   Size: $5.00 | Confidence: 83.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:10:47
+   LONG BTC/USDT @ $82,205.51
+   Size: $5.00 | Confidence: 92.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:10:55
+   LONG BTC/USDT @ $83,934.55
+   Size: $5.00 | Confidence: 90.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:11:10
+   LONG BTC/USDT @ $82,673.99
+   Size: $5.00 | Confidence: 78.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:11:18
+   LONG BTC/USDT @ $83,461.60
+   Size: $5.00 | Confidence: 82.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:11:28
+   LONG BTC/USDT @ $83,922.20
+   Size: $5.00 | Confidence: 69.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:11:42
+   LONG BTC/USDT @ $84,474.28
+   Size: $5.00 | Confidence: 66.9%
+   Open Positions: 1
+
+🟢 EXIT | 07:11:54
+   LONG BTC/USDT
+   Entry: $84,474.28 → Exit: $85,327.48
+   PnL: $0.05 (+1.01%)
+   Reason: take_profit
+   Balance: $1000.06
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 3
+Win Rate: 66.7% (2/3)
+Total PnL: $+0.06
+Balance: $1000.06
+Return: +0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:12:17
+   LONG BTC/USDT @ $84,571.69
+   Size: $5.00 | Confidence: 74.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:12:37
+   LONG BTC/USDT @ $83,259.75
+   Size: $5.00 | Confidence: 68.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:12:44
+   LONG BTC/USDT @ $84,408.45
+   Size: $5.00 | Confidence: 87.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:12:54
+   LONG BTC/USDT @ $82,330.07
+   Size: $5.00 | Confidence: 92.6%
+   Open Positions: 1
+
+🟢 ENTRY | 07:13:05
+   LONG BTC/USDT @ $84,169.30
+   Size: $5.00 | Confidence: 84.6%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 3
+Win Rate: 66.7% (2/3)
+Total PnL: $+0.06
+Balance: $1000.06
+Return: +0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:13:30
+   LONG BTC/USDT @ $83,283.52
+   Size: $5.00 | Confidence: 80.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:14:06
+   LONG BTC/USDT @ $84,083.63
+   Size: $5.00 | Confidence: 80.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:14:27
+   LONG BTC/USDT @ $83,944.09
+   Size: $5.00 | Confidence: 83.8%
+   Open Positions: 1
+
+🔴 EXIT | 07:14:44
+   LONG BTC/USDT
+   Entry: $83,944.09 → Exit: $83,049.85
+   PnL: $-0.05 (-1.07%)
+   Reason: stop_loss
+   Balance: $1000.01
+
+🟢 ENTRY | 07:14:50
+   LONG BTC/USDT @ $82,020.93
+   Size: $5.00 | Confidence: 83.4%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 4
+Win Rate: 50.0% (2/4)
+Total PnL: $+0.01
+Balance: $1000.01
+Return: +0.00%
+======================================================================
+
+
+🟢 ENTRY | 07:14:59
+   LONG BTC/USDT @ $84,220.49
+   Size: $5.00 | Confidence: 94.7%
+   Open Positions: 1
+
+🔴 EXIT | 07:15:22
+   LONG BTC/USDT
+   Entry: $84,220.49 → Exit: $83,539.99
+   PnL: $-0.04 (-0.81%)
+   Reason: stop_loss
+   Balance: $999.97
+
+🟢 ENTRY | 07:15:34
+   LONG BTC/USDT @ $83,012.74
+   Size: $5.00 | Confidence: 67.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:15:41
+   LONG BTC/USDT @ $83,853.35
+   Size: $5.00 | Confidence: 81.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:15:52
+   LONG BTC/USDT @ $82,556.40
+   Size: $5.00 | Confidence: 67.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:15:58
+   LONG BTC/USDT @ $83,258.00
+   Size: $5.00 | Confidence: 68.9%
+   Open Positions: 1
+
+🔴 EXIT | 07:16:06
+   LONG BTC/USDT
+   Entry: $83,258.00 → Exit: $82,768.45
+   PnL: $-0.03 (-0.59%)
+   Reason: stop_loss
+   Balance: $999.94
+
+🟢 ENTRY | 07:16:12
+   LONG BTC/USDT @ $84,389.35
+   Size: $5.00 | Confidence: 90.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:16:22
+   LONG BTC/USDT @ $84,288.03
+   Size: $5.00 | Confidence: 81.1%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 6
+Win Rate: 33.3% (2/6)
+Total PnL: $-0.06
+Balance: $999.94
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:16:54
+   LONG BTC/USDT @ $82,278.95
+   Size: $5.00 | Confidence: 86.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:17:05
+   LONG BTC/USDT @ $82,646.70
+   Size: $5.00 | Confidence: 87.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:17:16
+   LONG BTC/USDT @ $83,787.61
+   Size: $5.00 | Confidence: 73.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:17:24
+   LONG BTC/USDT @ $83,285.38
+   Size: $5.00 | Confidence: 89.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:17:29
+   LONG BTC/USDT @ $83,529.43
+   Size: $5.00 | Confidence: 85.6%
+   Open Positions: 1
+
+🟢 ENTRY | 07:17:46
+   LONG BTC/USDT @ $82,874.87
+   Size: $5.00 | Confidence: 86.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:18:01
+   LONG BTC/USDT @ $83,797.98
+   Size: $5.00 | Confidence: 90.1%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 6
+Win Rate: 33.3% (2/6)
+Total PnL: $-0.06
+Balance: $999.94
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:18:09
+   LONG BTC/USDT @ $82,373.32
+   Size: $5.00 | Confidence: 65.8%
+   Open Positions: 1
+
+🟢 ENTRY | 07:18:18
+   LONG BTC/USDT @ $82,885.47
+   Size: $5.00 | Confidence: 94.1%
+   Open Positions: 1
+
+🔴 EXIT | 07:18:24
+   LONG BTC/USDT
+   Entry: $82,885.47 → Exit: $82,452.55
+   PnL: $-0.03 (-0.52%)
+   Reason: stop_loss
+   Balance: $999.92
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 7
+Win Rate: 28.6% (2/7)
+Total PnL: $-0.08
+Balance: $999.92
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:20:30
+   LONG BTC/USDT @ $82,357.56
+   Size: $5.00 | Confidence: 81.7%
+   Open Positions: 1
+
+🟢 ENTRY | 09:20:23
+   LONG BTC/USDT @ $83,296.91
+   Size: $5.00 | Confidence: 88.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:20:56
+   LONG BTC/USDT @ $83,603.07
+   Size: $5.00 | Confidence: 88.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:21:05
+   LONG BTC/USDT @ $83,476.86
+   Size: $5.00 | Confidence: 76.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:21:17
+   LONG BTC/USDT @ $82,638.55
+   Size: $5.00 | Confidence: 86.7%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 7
+Win Rate: 28.6% (2/7)
+Total PnL: $-0.08
+Balance: $999.92
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:21:30
+   LONG BTC/USDT @ $82,558.40
+   Size: $5.00 | Confidence: 73.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:21:39
+   LONG BTC/USDT @ $84,252.63
+   Size: $5.00 | Confidence: 84.8%
+   Open Positions: 1
+
+🟢 ENTRY | 09:21:28
+   LONG BTC/USDT @ $82,863.78
+   Size: $5.00 | Confidence: 93.6%
+   Open Positions: 1
+
+🟢 ENTRY | 09:21:48
+   LONG BTC/USDT @ $83,073.42
+   Size: $5.00 | Confidence: 94.7%
+   Open Positions: 1
+
+🔴 EXIT | 07:22:19
+   LONG BTC/USDT
+   Entry: $83,073.42 → Exit: $82,068.04
+   PnL: $-0.06 (-1.21%)
+   Reason: stop_loss
+   Balance: $999.86
+
+🟢 ENTRY | 07:22:25
+   LONG BTC/USDT @ $84,915.95
+   Size: $5.00 | Confidence: 74.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:22:56
+   LONG BTC/USDT @ $82,820.39
+   Size: $5.00 | Confidence: 86.5%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 8
+Win Rate: 25.0% (2/8)
+Total PnL: $-0.14
+Balance: $999.86
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 09:23:08
+   LONG BTC/USDT @ $82,346.00
+   Size: $5.00 | Confidence: 87.3%
+   Open Positions: 1
+
+🟢 ENTRY | 07:23:30
+   LONG BTC/USDT @ $82,255.81
+   Size: $5.00 | Confidence: 90.3%
+   Open Positions: 1
+
+🟢 ENTRY | 07:23:51
+   LONG BTC/USDT @ $84,897.81
+   Size: $5.00 | Confidence: 76.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:23:59
+   LONG BTC/USDT @ $83,876.33
+   Size: $5.00 | Confidence: 87.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:24:07
+   LONG BTC/USDT @ $83,871.32
+   Size: $5.00 | Confidence: 88.1%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 8
+Win Rate: 25.0% (2/8)
+Total PnL: $-0.14
+Balance: $999.86
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:24:21
+   LONG BTC/USDT @ $83,551.69
+   Size: $5.00 | Confidence: 71.0%
+   Open Positions: 1
+
+🟢 ENTRY | 07:24:33
+   LONG BTC/USDT @ $82,435.74
+   Size: $5.00 | Confidence: 65.0%
+   Open Positions: 1
+
+🟢 ENTRY | 07:24:43
+   LONG BTC/USDT @ $83,251.78
+   Size: $5.00 | Confidence: 91.3%
+   Open Positions: 1
+
+🟢 ENTRY | 07:24:57
+   LONG BTC/USDT @ $84,675.62
+   Size: $5.00 | Confidence: 68.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:25:08
+   LONG BTC/USDT @ $84,496.58
+   Size: $5.00 | Confidence: 79.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:25:19
+   LONG BTC/USDT @ $83,497.74
+   Size: $5.00 | Confidence: 84.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:25:27
+   LONG BTC/USDT @ $84,831.32
+   Size: $5.00 | Confidence: 79.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:25:41
+   LONG BTC/USDT @ $82,798.76
+   Size: $5.00 | Confidence: 81.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:25:53
+   LONG BTC/USDT @ $82,689.85
+   Size: $5.00 | Confidence: 72.0%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 8
+Win Rate: 25.0% (2/8)
+Total PnL: $-0.14
+Balance: $999.86
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:26:16
+   LONG BTC/USDT @ $83,732.11
+   Size: $5.00 | Confidence: 86.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:26:25
+   LONG BTC/USDT @ $84,155.21
+   Size: $5.00 | Confidence: 71.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:26:48
+   LONG BTC/USDT @ $82,999.36
+   Size: $5.00 | Confidence: 75.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:27:01
+   LONG BTC/USDT @ $83,918.74
+   Size: $5.00 | Confidence: 65.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:27:18
+   LONG BTC/USDT @ $82,038.34
+   Size: $5.00 | Confidence: 75.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:27:28
+   LONG BTC/USDT @ $82,629.52
+   Size: $5.00 | Confidence: 73.7%
+   Open Positions: 1
+
+🔴 EXIT | 07:27:51
+   LONG BTC/USDT
+   Entry: $82,629.52 → Exit: $81,402.79
+   PnL: $-0.07 (-1.48%)
+   Reason: stop_loss
+   Balance: $999.78
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 9
+Win Rate: 22.2% (2/9)
+Total PnL: $-0.22
+Balance: $999.78
+Return: -0.02%
+======================================================================
+
+
+🟢 ENTRY | 07:27:58
+   LONG BTC/USDT @ $84,547.09
+   Size: $5.00 | Confidence: 94.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:28:07
+   LONG BTC/USDT @ $82,891.73
+   Size: $5.00 | Confidence: 91.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:28:15
+   LONG BTC/USDT @ $82,183.37
+   Size: $5.00 | Confidence: 73.0%
+   Open Positions: 1
+
+🟢 ENTRY | 07:28:25
+   LONG BTC/USDT @ $82,499.15
+   Size: $5.00 | Confidence: 69.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:28:37
+   LONG BTC/USDT @ $84,302.86
+   Size: $5.00 | Confidence: 72.6%
+   Open Positions: 1
+
+🟢 ENTRY | 07:28:45
+   LONG BTC/USDT @ $82,578.33
+   Size: $5.00 | Confidence: 73.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:28:59
+   LONG BTC/USDT @ $83,020.65
+   Size: $5.00 | Confidence: 69.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:29:09
+   LONG BTC/USDT @ $84,509.70
+   Size: $5.00 | Confidence: 78.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:29:18
+   LONG BTC/USDT @ $82,900.22
+   Size: $5.00 | Confidence: 90.2%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 9
+Win Rate: 22.2% (2/9)
+Total PnL: $-0.22
+Balance: $999.78
+Return: -0.02%
+======================================================================
+
+
+🟢 ENTRY | 07:29:31
+   LONG BTC/USDT @ $84,425.13
+   Size: $5.00 | Confidence: 70.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:29:43
+   LONG BTC/USDT @ $82,159.55
+   Size: $5.00 | Confidence: 73.6%
+   Open Positions: 1
+
+🟢 ENTRY | 07:30:04
+   LONG BTC/USDT @ $84,325.84
+   Size: $5.00 | Confidence: 94.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:30:09
+   LONG BTC/USDT @ $83,104.30
+   Size: $5.00 | Confidence: 65.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:30:22
+   LONG BTC/USDT @ $84,948.92
+   Size: $5.00 | Confidence: 92.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:30:37
+   LONG BTC/USDT @ $84,976.10
+   Size: $5.00 | Confidence: 69.7%
+   Open Positions: 1
+
+🟢 ENTRY | 09:30:29
+   LONG BTC/USDT @ $83,433.87
+   Size: $5.00 | Confidence: 73.0%
+   Open Positions: 1
+
+🟢 EXIT | 07:31:00
+   LONG BTC/USDT
+   Entry: $83,433.87 → Exit: $84,597.77
+   PnL: $0.07 (+1.39%)
+   Reason: take_profit
+   Balance: $999.85
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 10
+Win Rate: 30.0% (3/10)
+Total PnL: $-0.15
+Balance: $999.85
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:31:07
+   LONG BTC/USDT @ $83,009.78
+   Size: $5.00 | Confidence: 76.0%
+   Open Positions: 1
+
+🟢 ENTRY | 07:31:13
+   LONG BTC/USDT @ $84,503.41
+   Size: $5.00 | Confidence: 66.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:31:48
+   LONG BTC/USDT @ $84,019.17
+   Size: $5.00 | Confidence: 92.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:32:00
+   LONG BTC/USDT @ $83,256.70
+   Size: $5.00 | Confidence: 90.6%
+   Open Positions: 1
+
+🟢 ENTRY | 07:32:13
+   LONG BTC/USDT @ $83,085.39
+   Size: $5.00 | Confidence: 93.1%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 10
+Win Rate: 30.0% (3/10)
+Total PnL: $-0.15
+Balance: $999.85
+Return: -0.01%
+======================================================================
+
+
+🟢 ENTRY | 07:32:22
+   LONG BTC/USDT @ $82,638.30
+   Size: $5.00 | Confidence: 74.2%
+   Open Positions: 1
+
+🔴 EXIT | 07:32:41
+   LONG BTC/USDT
+   Entry: $82,638.30 → Exit: $81,576.33
+   PnL: $-0.06 (-1.29%)
+   Reason: stop_loss
+   Balance: $999.79
+
+🟢 ENTRY | 07:32:54
+   LONG BTC/USDT @ $82,575.74
+   Size: $5.00 | Confidence: 77.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:33:26
+   LONG BTC/USDT @ $84,510.06
+   Size: $5.00 | Confidence: 67.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:33:44
+   LONG BTC/USDT @ $82,617.92
+   Size: $5.00 | Confidence: 67.4%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 11
+Win Rate: 27.3% (3/11)
+Total PnL: $-0.21
+Balance: $999.79
+Return: -0.02%
+======================================================================
+
+
+🟢 ENTRY | 07:34:04
+   LONG BTC/USDT @ $82,434.51
+   Size: $5.00 | Confidence: 84.2%
+   Open Positions: 1
+
+🟢 ENTRY | 07:34:10
+   LONG BTC/USDT @ $84,028.18
+   Size: $5.00 | Confidence: 78.6%
+   Open Positions: 1
+
+🟢 ENTRY | 07:34:24
+   LONG BTC/USDT @ $82,980.75
+   Size: $5.00 | Confidence: 87.7%
+   Open Positions: 1
+
+🟢 ENTRY | 07:34:30
+   LONG BTC/USDT @ $83,629.41
+   Size: $5.00 | Confidence: 73.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:34:37
+   LONG BTC/USDT @ $82,820.54
+   Size: $5.00 | Confidence: 80.9%
+   Open Positions: 1
+
+🟢 ENTRY | 07:34:47
+   LONG BTC/USDT @ $82,922.12
+   Size: $5.00 | Confidence: 80.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:35:08
+   LONG BTC/USDT @ $84,957.00
+   Size: $5.00 | Confidence: 76.1%
+   Open Positions: 1
+
+🟢 ENTRY | 07:35:17
+   LONG BTC/USDT @ $84,467.70
+   Size: $5.00 | Confidence: 93.4%
+   Open Positions: 1
+
+🟢 ENTRY | 07:35:24
+   LONG BTC/USDT @ $84,986.57
+   Size: $5.00 | Confidence: 82.7%
+   Open Positions: 1
+
+======================================================================
+📊 TRADING SUMMARY
+======================================================================
+Total Trades: 11
+Win Rate: 27.3% (3/11)
+Total PnL: $-0.21
+Balance: $999.79
+Return: -0.02%
+======================================================================
+
+
+🟢 ENTRY | 07:35:37
+   LONG BTC/USDT @ $82,152.65
+   Size: $5.00 | Confidence: 81.0%
+   Open Positions: 1
+
+🔴 EXIT | 07:35:52
+   LONG BTC/USDT
+   Entry: $82,152.65 → Exit: $81,496.80
+   PnL: $-0.04 (-0.80%)
+   Reason: stop_loss
+   Balance: $999.75
+
+🟢 ENTRY | 07:36:04
+   LONG BTC/USDT @ $82,963.09
+   Size: $5.00 | Confidence: 89.5%
+   Open Positions: 1
+
+🟢 ENTRY | 07:36:35
+   LONG BTC/USDT @ $82,299.44
+   Size: $5.00 | Confidence: 93.0%
+   Open Positions: 1
+
+🟢 ENTRY | 09:36:24
+   LONG BTC/USDT @ $84,387.03
+   Size: $5.00 | Confidence: 70.3%
+   Open Positions: 1

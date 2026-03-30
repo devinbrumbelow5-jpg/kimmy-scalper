@@ -1,0 +1,30 @@
+2026-03-30 06:41:31,085 [INFO] ============================================================
+2026-03-30 06:41:31,085 [INFO] 🚀 KIMMY SCALPER v2.0 - ELITE CRYPTO TRADING
+2026-03-30 06:41:31,085 [INFO] ============================================================
+2026-03-30 06:41:31,085 [INFO] Mode: PAPER
+2026-03-30 06:41:31,085 [INFO] Pair: BTC/USDT
+2026-03-30 06:41:31,085 [INFO] Balance: $1000 USDT
+2026-03-30 06:41:31,085 [INFO] ============================================================
+2026-03-30 06:41:31,568 [ERROR] [ENGINE] WebSocket connection failed: server rejected WebSocket connection: HTTP 451
+2026-03-30 06:41:31,568 [INFO] [ENGINE] Trading engine initialized
+2026-03-30 06:41:40,354 [INFO] 
+[SHUTDOWN] Stopping Kimmy Scalper...
+2026-03-30 06:41:40,354 [INFO] [ENGINE] Trading engine stopped
+2026-03-30 06:50:10,774 [INFO] ============================================================
+2026-03-30 06:50:10,774 [INFO] 🚀 KIMMY SCALPER v2.0 - ELITE CRYPTO TRADING
+2026-03-30 06:50:10,774 [INFO] ============================================================
+2026-03-30 06:50:10,774 [INFO] Mode: PAPER
+2026-03-30 06:50:10,774 [INFO] Pair: BTC/USDT
+2026-03-30 06:50:10,774 [INFO] Balance: $1000 USDT
+2026-03-30 06:50:10,775 [INFO] ============================================================
+2026-03-30 06:50:11,245 [ERROR] [ENGINE] WebSocket connection failed: server rejected WebSocket connection: HTTP 451
+2026-03-30 06:50:11,246 [INFO] [ENGINE] Trading engine initialized
+2026-03-30 06:51:59,414 [INFO] ============================================================
+2026-03-30 06:51:59,414 [INFO] 🚀 KIMMY SCALPER v2.0 - ELITE CRYPTO TRADING
+2026-03-30 06:51:59,414 [INFO] ============================================================
+2026-03-30 06:51:59,414 [INFO] Mode: PAPER
+2026-03-30 06:51:59,414 [INFO] Pair: BTC/USDT
+2026-03-30 06:51:59,414 [INFO] Balance: $1000 USDT
+2026-03-30 06:51:59,414 [INFO] ============================================================
+2026-03-30 06:52:00,155 [INFO] [ENGINE] WebSocket connected: wss://stream.bybit.com/v5/public/linear (BTCUSDT)
+2026-03-30 06:52:00,155 [INFO] [ENGINE] Trading engine initialized
