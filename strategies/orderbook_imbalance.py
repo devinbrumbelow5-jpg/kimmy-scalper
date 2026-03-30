@@ -9,6 +9,7 @@ from typing import Optional, Dict, List
 from decimal import Decimal
 import numpy as np
 
+
 @dataclass
 class Signal:
     side: str  # 'buy' | 'sell'
@@ -19,11 +20,13 @@ class Signal:
     reason: str
     timestamp: float
 
+
 @dataclass
 class OrderbookLevel:
     price: float
     volume: float
     timestamp: float
+
 
 class OrderbookImbalanceStrategy:
     """
@@ -214,35 +217,30 @@ class OrderbookImbalanceStrategy:
         return None
         
     def should_exit(self, position: dict, current_price: float) -> Optional[str]:
-        """Check if position should be closed"""
+        """Determine if position should be exited (trailing stop, time-based, etc.)"""
         if not position:
             return None
             
-        entry = position['entry_price']
-        side = position['side']
-        pnl_pct = (current_price - entry) / entry if side == 'long' else (entry - current_price) / entry
+        entry = position.get('entry_price')
+        side = position.get('side')
+        open_time = position.get('open_time', 0)
         
-        # Stop loss hit
-        if pnl_pct <= -self.stop_loss:
-            return 'stop_loss'
+        # Time-based exit (max 5 minutes for scalping)
+        if time.time() - open_time > 300:
+            return "time_exit"
             
-        # Take profit hit
-        if pnl_pct >= self.take_profit:
-            return 'take_profit'
-            
-        # Trailing stop logic
-        if pnl_pct >= self.trailing_activation:
-            max_favorable = position.get('max_favorable', pnl_pct)
-            if pnl_pct > max_favorable:
-                position['max_favorable'] = pnl_pct
-            elif max_favorable - pnl_pct > self.trailing_distance:
-                return 'trailing_stop'
-                
-        # Orderbook reversal
-        imbalance = self.calculate_imbalance()
-        if side == 'long' and imbalance < 0.4:  # Reversed to ask-heavy
-            return 'orderbook_reversal'
-        elif side == 'short' and imbalance > 0.6:  # Reversed to bid-heavy
-            return 'orderbook_reversal'
-            
+        # Trailing stop
+        if side == 'long':
+            pnl_pct = (current_price - entry) / entry
+            if pnl_pct >= self.trailing_activation:
+                trailing_stop = current_price * (1 - self.trailing_distance)
+                if current_price <= trailing_stop:
+                    return "trailing_stop"
+        else:  # short
+            pnl_pct = (entry - current_price) / entry
+            if pnl_pct >= self.trailing_activation:
+                trailing_stop = current_price * (1 + self.trailing_distance)
+                if current_price >= trailing_stop:
+                    return "trailing_stop"
+        
         return None
