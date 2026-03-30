@@ -8,17 +8,14 @@ from typing import Dict, List, Optional
 
 from textual.app import App, ComposeResult
 from textual.containers import Horizontal, Vertical, Grid
-from textual.widgets import (
-    Header, Footer, DataTable, Static, Log, ProgressBar,
-    Rule, Label, Sparkline, Input, Button
-)
+from textual.widgets import Header, Footer, DataTable, Static, Log, ProgressBar
 from textual.reactive import reactive
-from textual.timer import Timer
+
 from rich.text import Text
 from rich.panel import Panel
-from rich.layout import Layout
 from rich.table import Table
 from rich.sparkline import Sparkline
+
 
 class PnLChart(Static):
     """Real-time P&L sparkline chart"""
@@ -42,6 +39,7 @@ class PnLChart(Static):
             border_style=color
         )
 
+
 class OrderbookDisplay(Static):
     """Live orderbook visualization"""
     
@@ -64,7 +62,6 @@ class OrderbookDisplay(Static):
         table.add_column("Price", justify="left", style="green", width=12)
         table.add_column("Vol", justify="left", style="cyan", width=8)
         
-        # Header
         rows = []
         
         # Asks (descending)
@@ -83,6 +80,7 @@ class OrderbookDisplay(Static):
             
         return Panel(table, title="[bold]Orderbook[/]", border_style="blue")
 
+
 class TradeTable(DataTable):
     """Recent trades display"""
     
@@ -95,7 +93,7 @@ class TradeTable(DataTable):
         self.add_row(
             trade.get('time', '--'),
             trade.get('pair', '--'),
-            f"[{'green' if trade.get('side') == 'buy' else 'red'}]{trade.get('side', '--').upper()}[/]",
+            f"[{'green' if trade.get('side') == 'long' else 'red'}]{trade.get('side', '--').upper()}[/]",
             f"{trade.get('entry', 0):,.2f}",
             f"{trade.get('exit', 0):,.2f}",
             f"[{color}]{trade.get('pnl', 0):+.2%}[/]",
@@ -104,14 +102,13 @@ class TradeTable(DataTable):
         if self.row_count > 20:
             self.remove_row(self.row_count - 1)
 
+
 class StatsPanel(Static):
     """Key statistics display"""
     
     balance = reactive(1000.0)
     total_pnl = reactive(0.0)
     win_rate = reactive(0.0)
-    sharpe = reactive(0.0)
-    drawdown = reactive(0.0)
     open_positions = reactive(0)
     daily_trades = reactive(0)
     
@@ -130,10 +127,6 @@ class StatsPanel(Static):
         )
         grid.add_row(
             "Win Rate:", f"{self.win_rate:.1%}",
-            "Sharpe:", f"{self.sharpe:.2f}"
-        )
-        grid.add_row(
-            "Drawdown:", f"{self.drawdown:.2%}",
             "Open Pos:", str(self.open_positions)
         )
         grid.add_row(
@@ -143,38 +136,34 @@ class StatsPanel(Static):
         
         return Panel(grid, title="[bold]Statistics[/]", border_style="green")
 
+
 class SignalPanel(Static):
     """Current strategy signals"""
     
     signal = reactive(None)
     confidence = reactive(0.0)
-    imbalance = reactive(0.5)
-    momentum = reactive(0.0)
-    rsi = reactive(50.0)
     
     def render(self):
         if not self.signal:
             return Panel("[dim]No active signal[/]", title="Signals", border_style="dim")
             
-        arrow = "▲" if self.signal == 'buy' else "▼"
-        color = "green" if self.signal == 'buy' else "red"
+        side = self.signal.get('side')
+        arrow = "▲" if side == 'buy' else "▼"
+        color = "green" if side == 'buy' else "red"
         
         text = Text()
         text.append(f"Signal: ", style="bold")
-        text.append(f"{arrow} {self.signal.upper()}", style=f"{color} bold")
+        text.append(f"{arrow} {side.upper()}", style=f"{color} bold")
         text.append(f"\nConfidence: {self.confidence:.1%}\n")
-        text.append(f"Orderbook Imbalance: {self.imbalance:.1%}\n")
-        text.append(f"Momentum: {self.momentum:+.2%}\n")
-        text.append(f"RSI: {self.rsi:.1f}")
         
         return Panel(text, title="[bold]Strategy Signals[/]", border_style=color)
+
 
 class KimmyDashboard(App):
     """Main Textual Application"""
     
     CSS = """
     Screen { align: center middle; }
-    
     .header { dock: top; }
     .footer { dock: bottom; }
     
@@ -200,17 +189,14 @@ class KimmyDashboard(App):
     def __init__(self, trading_engine=None):
         super().__init__()
         self.engine = trading_engine
-        self.update_timer: Optional[Timer] = None
-        self.pnl_data = []
+        self.update_timer = None
         
     def compose(self) -> ComposeResult:
-        yield Header(show_clock=True)
+        """Build the UI layout"""
+        yield Header()
         
         with Grid(id="main-grid"):
-            # Row 1: Stats
             yield StatsPanel(id="stats")
-            
-            # Row 2-3: Main content
             yield OrderbookDisplay(id="orderbook")
             yield PnLChart(id="pnl-chart")
             yield TradeTable(id="trades")
@@ -219,14 +205,14 @@ class KimmyDashboard(App):
             
         yield Footer()
         
-    def on_mount(self):
-        """Start update loop"""
-        self.update_timer = self.set_interval(2.0, self.refresh_data)
+    async def on_mount(self):
+        """Start live updates"""
+        self.update_timer = self.set_interval(1.0, self.refresh_dashboard)
         self.query_one(Log).write("[green]Kimmy Scalper initialized[/]")
         self.query_one(Log).write("[yellow]Connecting to exchange...[/]")
         
-    def refresh_data(self):
-        """Update all panels with fresh data"""
+    def refresh_dashboard(self):
+        """Pull latest data from engine and update panels"""
         if not self.engine:
             return
             
@@ -242,8 +228,6 @@ class KimmyDashboard(App):
             stats_panel.balance = stats.get('balance', 1000)
             stats_panel.total_pnl = stats.get('total_pnl', 0)
             stats_panel.win_rate = stats.get('win_rate', 0)
-            stats_panel.sharpe = stats.get('sharpe', 0)
-            stats_panel.drawdown = stats.get('drawdown', 0)
             stats_panel.open_positions = stats.get('open_positions', 0)
             stats_panel.daily_trades = stats.get('daily_trades', 0)
             
@@ -252,31 +236,26 @@ class KimmyDashboard(App):
             book_panel.update_book(book.get('bids', []), book.get('asks', []))
             
             # Update PNL chart
-            self.pnl_data.append(stats.get('total_pnl', 0))
             pnl_panel = self.query_one(PnLChart)
-            pnl_panel.update_chart(self.pnl_data)
+            if stats.get('total_pnl'):
+                pnl_panel.update_chart([stats.get('total_pnl', 0)])
             
             # Update signals
             signal_panel = self.query_one(SignalPanel)
             if signal:
-                signal_panel.signal = signal.get('side')
+                signal_panel.signal = signal
                 signal_panel.confidence = signal.get('confidence', 0)
-                signal_panel.imbalance = signal.get('imbalance', 0.5)
-                signal_panel.momentum = signal.get('momentum', 0)
-                signal_panel.rsi = signal.get('rsi', 50)
-                
+            
             # Add new trades
             trades_table = self.query_one(TradeTable)
             for trade in trades:
                 trades_table.add_trade(trade)
-                
+            
             # Log heartbeat
             log = self.query_one(Log)
-            if stats.get('last_trade_time'):
-                log.write(f"[dim]Heartbeat: {datetime.now().strftime('%H:%M:%S')} | "
-                         f"Price: {book.get('mid', 0):,.2f} | "
-                         f"Positions: {stats['open_positions']}[/]")
-                         
+            log.write(f"[{datetime.now().strftime('%H:%M:%S')}] Dashboard refreshed | "
+                     f"Positions: {stats.get('open_positions', 0)}")
+                     
         except Exception as e:
             log = self.query_one(Log)
             log.write(f"[red]Error: {str(e)}[/]")
@@ -286,6 +265,7 @@ class KimmyDashboard(App):
         if self.engine:
             self.engine.stop()
         self.exit()
+
 
 # Entry point
 if __name__ == "__main__":
